@@ -16,7 +16,7 @@ config :imcon, :pow,
 # Configures the endpoint
 config :imcon, ImconWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "xwBv9uRfkEpl0JUrqE7u4C3cSDZD8dc33U2EVlWigIQqeerlwJXUd7FmbeM8KiQJ",
+  secret_key_base: "33U2EVlWigIQJxwBv9uRfkEpl0JUrqE7u4C3cSDZD8dcqeerlwJXUd7FmbeM8KiQ",
   render_errors: [view: ImconWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: ImconWeb.PubSub,
            adapter: Phoenix.PubSub.PG2]
