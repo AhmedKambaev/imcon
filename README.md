@@ -3,7 +3,9 @@ Hardware-software complex simulating thinking
 
 To start your Phoenix server:
 
-Install dependencies with mix deps.get
+Install dependencies with
+
+mix deps.get
 
 Create and migrate your database with
 
