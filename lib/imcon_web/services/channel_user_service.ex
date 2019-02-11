@@ -59,7 +59,7 @@ defmodule ImconWeb.ChannelUserService do
     end
   end
 
-  def direct_channels_users(%User{id: user_id}) do
+  def direct_channels_user(%User{id: user_id}) do
     result = Repo.all(from ch in Chat.direct, join: cu in ChannelUser, on: ch.id == cu.channel_id,
                                         where: cu.user_id == ^user_id, select: {ch, cu})
     Enum.unzip(result)
