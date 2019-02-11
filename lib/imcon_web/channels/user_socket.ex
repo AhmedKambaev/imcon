@@ -10,10 +10,12 @@ defmodule ImconWeb.UserSocket do
   channel "event:*", EventChannel
 
   def connect(%{"token" => token}, socket) do
-    case Guardian.resource_from_token(token) do
+    case Guardian.decode_and_verify(token) do
+      {:ok, claims} ->
+    case Guardian.resource_from_token(claims["sub"]) do
       {:ok, user} ->
         {:ok, assign(socket, :current_user, user)}
-
+      end
       {:error, _reason} ->
         :error
     end
