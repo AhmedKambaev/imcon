@@ -21,8 +21,8 @@ defmodule ImconWeb.ChannelUserService do
 
   def joined_channels_status(user) do
     # TODO: only channel_user of joined channels are needed
-    channel_user = Repo.all assoc(user, :channel_users)
-    Enum.reduce(channel_users, %{}, fn(x, acc) -> Map.put(acc, x.channel_id, true) end)
+    channel_user = Repo.all assoc(user, :channel_user)
+    Enum.reduce(channel_user, %{}, fn(x, acc) -> Map.put(acc, x.channel_id, true) end)
   end
 
   def create_channel_user(channel, user, options \\ []) do
