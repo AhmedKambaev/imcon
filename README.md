@@ -1,5 +1,5 @@
 # imcon
-Hardware-software complex simulating thinking
+Hardware-software complex simulating thinking http://caix.ru/
 
 The basis of the projects were taken https://github.com/bigardone/phoenix-trello https://github.com/tony612/exchat
 
