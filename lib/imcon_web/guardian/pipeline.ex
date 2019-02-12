@@ -4,6 +4,6 @@ defmodule ImconWeb.Guardian.Pipeline do
     error_handler: ImconWeb.Guardian.ErrorHandler,
     module: ImconWeb.Guardian
 
-  plug(Guardian.Plug.VerifyHeader, realm: "Bearer")
-  plug(Guardian.Plug.LoadResource, allow_blank: true)
+  plug Guardian.Plug.VerifyHeader
+  plug Guardian.Plug.LoadResource, allow_blank: true
 end
