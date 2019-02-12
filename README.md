@@ -1,6 +1,8 @@
 # imcon
 Hardware-software complex simulating thinking
 
+The basis of the projects were taken https://github.com/bigardone/phoenix-trello https://github.com/tony612/exchat
+
 To start your Phoenix server:
 
 Install dependencies with
