@@ -1,7 +1,7 @@
 defmodule ImconWeb.UserSocket do
   use Phoenix.Socket
 
-  alias ImconWeb.{Guardian, TreeChannel, UserChannel, MessageChannel, EventChannel}
+  alias ImconWeb.{Guardian, BranchChannel, TreeChannel, UserChannel, MessageChannel, EventChannel}
   
   # Channels
   channel "tree:*", TreeChannel
@@ -10,12 +10,10 @@ defmodule ImconWeb.UserSocket do
   channel "event:*", EventChannel
 
   def connect(%{"token" => token}, socket) do
-    case Guardian.decode_and_verify(token) do
-      {:ok, claims} ->
-    case Guardian.resource_from_token(claims["sub"]) do
+    case Guardian.resource_from_token(token) do
       {:ok, user} ->
         {:ok, assign(socket, :current_user, user)}
-      end
+
       {:error, _reason} ->
         :error
     end
