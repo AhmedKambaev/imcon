@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import { Socket as PhoenixSocket } from 'phoenix'
 
-const ImconSocket = {
+const ChatSocket = {
   socket: null,
 
   connect(token, silent = false) {
@@ -60,4 +60,4 @@ const ImconSocket = {
 
 }
 
-export default ImconSocket
+export default ChatSocket
