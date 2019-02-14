@@ -46,14 +46,14 @@ defmodule Imcon.Mixfile do
       {:cowboy, "~> 2.6.0"},
       {:plug_cowboy, "~> 2.0.0"},
       {:comeonin, "~> 4.1.1"},
-      {:bcrypt_elixir, "~> 1.1"},
+      {:bcrypt_elixir, "~> 1.0.9"},
       {:credo, "~> 0.10.2", only: [:dev, :test]},
       {:ex_machina, "~> 2.2.2"},
       {:exactor, "~> 2.2.4"},
       {:hound, "~> 1.0.2"},
       {:mix_test_watch, "~> 0.9.0", only: :dev},
       {:poolboy, "~> 1.5.1"},
-      {:joken, "~> 1.5.0"}
+      {:guardian, "~> 1.2.1"}
     ]
   end
 
