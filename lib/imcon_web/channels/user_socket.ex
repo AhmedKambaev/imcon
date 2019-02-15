@@ -12,13 +12,8 @@ defmodule ImconWeb.UserSocket do
 
   def connect(%{"token" => token}, socket) do
     case Guardian.Phoenix.Socket.authenticate(socket, ImconWeb.Guardian, token) do
-<<<<<<< HEAD
-      {:ok, auth} ->
-      {:ok, assign(socket, :current_user, auth)}
-=======
-      {:ok, user} ->
-        {:ok, assign(socket, :current_user, user)}
->>>>>>> 0658036be937888cb658d908fe77b67735cb73b3
+      {:ok, authed_socket} ->
+        {:ok, authed_socket}
 
       {:error, _reason} ->
         :error
@@ -27,5 +22,5 @@ defmodule ImconWeb.UserSocket do
 
   def connect(_params, _socket), do: :error
 
-  def id(socket), do: "user_socket:#{socket.assigns.current_user.id}"
+  def id(socket), do: "user_socket:#{Guardian.Phoenix.Socket.current_resource(socket).id}"
 end
