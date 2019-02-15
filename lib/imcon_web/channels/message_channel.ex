@@ -8,7 +8,7 @@ defmodule ImconWeb.MessageChannel do
   @default_history_count 100
 
   # TODO: Authorization should be added, users can only join some channels
-  def join("channel:" <> _channel_id, _auth_msg, socket) do
+  def join("dialog:" <> _dialog_id, _auth_msg, socket) do
     channel = channel_from_topic(socket.topic)
     messages = MessageService.load_messages(channel, Extime.now_ts) |> Repo.preload(:user)
     unread_count = UnreadService.unread_count(socket.assigns.user, channel)
