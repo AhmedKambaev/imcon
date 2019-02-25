@@ -2,9 +2,7 @@ defmodule ImconWeb.Guardian do
   use Guardian, otp_app: :imcon
   alias Imcon.Auth
 
-  def current_user(conn) do
-    ImconWeb.Guardian.Plug.current_resource(conn)
-  end
+  @token_expireation 24 * 14
 
   def subject_for_token(user, _claims) do
     # You can use any value for the subject of your token but
@@ -15,13 +13,29 @@ defmodule ImconWeb.Guardian do
         {:ok, to_string(user.id)}
   end
 
-  def resource_from_claims(%{"sub" => id}) do
+  #def resource_from_claims(%{"sub" => id}) do
     # Here we'll look up our resource from the claims, the subject can be
     # found in the `"sub"` key. In `above subject_for_token/2` we returned
     # the resource id so here we'll rely on that to look it up.
-        case Auth.get_user(id) do
-      nil -> {:error, "Unknown resource type"}
+ #       case Auth.get_user(id) do
+ #     nil -> {:error, "Unknown resource type"}
+ #     user -> {:ok, user}
+ #   end
+ # end
+
+  def resource_from_claims(%{"sub" => id}) do
+    case Auth.get_user(id) do
+      nil -> {:error, :resource_not_found}
       user -> {:ok, user}
     end
+  end
+
+  def jwt_encode(source, args \\ %{}) do
+    encode_and_sign(source, args, ttl: {@token_expireation, :hour})
+  end
+
+  # jwt_decode
+  def jwt_decode(token) do
+    resource_from_token(token)
   end
 end
