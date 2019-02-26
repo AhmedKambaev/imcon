@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import { Redirect, Route } from 'react-router-dom'
 
-import MainLayout          from './containers/main'
 import Forest              from './containers/forest'
 import Registration        from './components/pages/registration'
 import Session             from './components/pages/session'
@@ -18,7 +17,6 @@ export default function Routes(store) {
       <Route path="/sign_in" component={Session} />
       <Route path="/sign_up" component={Registration} />
       <Route exact path="/" render={() => <Redirect to="/sign_in"/>} />
-      <MainLayout >
         <PrivateRoute path="/ic" component={Forest}/>
         <PrivateRoute exast path="/ic" component={HomeView}/>
 
@@ -26,7 +24,6 @@ export default function Routes(store) {
         <TreeShowView params={match.params}>
           <PrivateRoute path="leaflet/:id" component={LeafletShowView}/>
         </TreeShowView>} />
-      </MainLayout>
     </Fragment>
   )
 }
